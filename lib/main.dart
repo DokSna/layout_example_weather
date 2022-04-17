@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,6 +49,10 @@ Widget _buildBody() {
               _weatherDescription(),
               const Divider(),
               _temperature(),
+              const Divider(),
+              _temperatureForecast(),
+              const Divider(),
+              _footerRatings(),
             ],
           ),
         ),
@@ -117,6 +123,52 @@ Row _temperature() {
           ),
         ],
       ),
+    ],
+  );
+}
+
+Wrap _temperatureForecast() {
+  return Wrap(
+    spacing: 10.0,
+    children: List.generate(8, (int index) {
+      return Chip(
+        label: Text(
+          '${index + 20}°C',
+          style: const TextStyle(fontSize: 15.0),
+        ),
+        avatar: Icon(
+          Icons.wb_cloudy,
+          color: Colors.blue.shade300,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+          side: const BorderSide(color: Colors.grey),
+        ),
+        backgroundColor: Colors.grey.shade100,
+      );
+    }),
+  );
+}
+
+Row _footerRatings() {
+  var stars = Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.star, size: 15.0, color: Colors.yellow[600]),
+      Icon(Icons.star, size: 15.0, color: Colors.yellow[600]),
+      Icon(Icons.star, size: 15.0, color: Colors.yellow[600]),
+      const Icon(Icons.star, size: 15.0, color: Colors.black),
+      const Icon(Icons.star, size: 15.0, color: Colors.black),
+    ],
+  );
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      const Text(
+        'Info with openweathermap.org',
+        style: TextStyle(fontSize: 15.0),
+      ),
+      stars
     ],
   );
 }
