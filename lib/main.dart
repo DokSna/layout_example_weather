@@ -37,6 +37,7 @@ Widget _buildBody() {
   return SingleChildScrollView(
     child: Column(children: <Widget>[
       _headerImage(),
+      _weatherDescription(),
     ]),
   );
 }
@@ -45,5 +46,25 @@ Image _headerImage() {
   return const Image(
     image: AssetImage('assets/images/sun2.jpg'),
     fit: BoxFit.cover,
+  );
+}
+
+Column _weatherDescription() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: const <Widget>[
+      Text(
+        'Tuesday - May 22',
+        style: TextStyle(
+          fontSize: 32.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Divider(),
+      Text(
+        'Ex nisi Lorem est et. Laboris laborum sit ea ullamco sunt magna in. Magna aliquip voluptate id fugiat adipisicing magna incididunt minim cillum labore deserunt eiusmod aliqua tempor. Sint quis sit labore officia in do est fugiat mollit amet.',
+        style: TextStyle(color: Colors.black54),
+      ),
+    ],
   );
 }
