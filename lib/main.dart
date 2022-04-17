@@ -40,11 +40,13 @@ Widget _buildBody() {
       _headerImage(),
       SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               _weatherDescription(),
+              const Divider(),
+              _temperature(),
             ],
           ),
         ),
@@ -75,6 +77,45 @@ Column _weatherDescription() {
       Text(
         'Ex nisi Lorem est et. Laboris laborum sit ea ullamco sunt magna in. Magna aliquip voluptate id fugiat adipisicing magna incididunt minim cillum labore deserunt eiusmod aliqua tempor. Sint quis sit labore officia in do est fugiat mollit amet.',
         style: TextStyle(color: Colors.black54),
+      ),
+    ],
+  );
+}
+
+Row _temperature() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const <Widget>[
+          Icon(Icons.wb_sunny, color: Colors.yellow),
+        ],
+      ),
+      const SizedBox(
+        width: 16.0,
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: const [
+              // код символа градусы° "alt + 0176"
+              Text(
+                '15° Clear',
+                style: TextStyle(color: Colors.deepPurple),
+              ),
+            ],
+          ),
+          Row(
+            children: const <Widget>[
+              Text(
+                'Murmanskaya oblast, Murmans',
+                style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );
