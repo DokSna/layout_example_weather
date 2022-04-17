@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,13 +20,13 @@ class MyApp extends StatelessWidget {
             onPressed: () {},
           ),
           iconTheme: const IconThemeData(color: Colors.black54),
-          brightness: Brightness.light,
           actions: <Widget>[
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.settings),
             ),
           ],
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
         body: _buildBody(),
       ),
@@ -37,7 +38,17 @@ Widget _buildBody() {
   return SingleChildScrollView(
     child: Column(children: <Widget>[
       _headerImage(),
-      _weatherDescription(),
+      SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              _weatherDescription(),
+            ],
+          ),
+        ),
+      ),
     ]),
   );
 }
